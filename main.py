@@ -1,5 +1,8 @@
-title = "This will be the camera app"
-# Access camera
-# take video
-# send video to buckets
-print title
+import picamera
+
+print "Accessing Camera"
+with picamera.PiCamera() as camera:
+    camera.resolution(1280, 720)
+    camera.capture("./image.jpg")
+
+print "Picture Taken"
