@@ -1,6 +1,6 @@
 import picamera
 from subprocess import call
-from time import sleep
+from time import localtime, sleep, strftime
 
 print "Accessing Camera"
 with picamera.PiCamera() as camera:
@@ -10,8 +10,7 @@ with picamera.PiCamera() as camera:
     camera.stop_recording()
 
 print "Video being converted"
-command1 = "MP4Box -add sampleVideo.h264 " + "./videos/converted.mp4"
-command2 = "sudo rm sampleVideo.h264"
-call([command1, command2], shell=True)
+command1 = "MP4Box -add sampleVideo.h264 ./videos/{0}.mp4".format(strftime('%b%d_%H:%M', localtime()))
+call([command1], shell=True)
 
 print "File finished"
