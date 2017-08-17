@@ -10,7 +10,7 @@ with picamera.PiCamera() as camera:
     camera.stop_recording()
 
 print "Video being converted"
-command1 = "MP4Box --add sampleVideo.h264 " + "converted.mp4"
+command1 = "MP4Box -add sampleVideo.h264 " + "./videos/converted.mp4"
 command2 = "sudo rm sampleVideo.h264"
 call([command1, command2], shell=True)
 
